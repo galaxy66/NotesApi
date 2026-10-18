@@ -16,13 +16,14 @@ namespace NotesApi.Controllers
         {
             _notes = note;
         }
-
+        [HttpPost]
+        [Route("api/notes")]
         public IActionResult CreateNote(Note note)
         {
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);
-            return Created("/notes/" + note.Id,note);
+            return Created("/api/notes/" + note.Id,note);
         }
     }
 }
