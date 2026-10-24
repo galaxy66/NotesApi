@@ -11,10 +11,10 @@ namespace NotesApi.Infrastructure
 
     public class NoteRepository : INoteRepository
     {
-
+        list<Note> notes = new list<Note>();
         public void Add(Note note)
         {
-            list<Note> notes = new list<Note>();
+
             notes.Add(note);
 
         }
