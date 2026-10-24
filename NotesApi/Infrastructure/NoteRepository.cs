@@ -14,7 +14,7 @@ namespace NotesApi.Infrastructure
         List<Note> notes = new List<Note>();
         public void Add(Note note)
         {
-
+            note.Id = notes.Count + 1;
             notes.Add(note);
 
         }

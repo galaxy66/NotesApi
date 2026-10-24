@@ -9,7 +9,8 @@ using NotesApi.Infrastructure;
 
 namespace NotesApi.Controllers
 {
-    public class NotesController:ControllerBase
+    [ApiController]
+    public class NotesController : ControllerBase
     {
         private readonly INoteRepository _notes;
         public NotesController(INoteRepository note)
@@ -23,7 +24,7 @@ namespace NotesApi.Controllers
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);
-            return Created("/api/notes/" + note.Id,note);
+            return Created("/api/notes/" + note.Id, note);
         }
     }
 }
