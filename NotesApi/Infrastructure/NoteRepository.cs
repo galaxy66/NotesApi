@@ -11,7 +11,7 @@ namespace NotesApi.Infrastructure
 
     public class NoteRepository : INoteRepository
     {
-        list<Note> notes = new list<Note>();
+        List<Note> notes = new List<Note>();
         public void Add(Note note)
         {
 
