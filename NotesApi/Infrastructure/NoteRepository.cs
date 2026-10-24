@@ -7,19 +7,15 @@ using NotesApi.Domain;
 
 namespace NotesApi.Infrastructure
 {
-   
-    
-    public class NoteRepository:INoteRepository
+
+
+    public class NoteRepository : INoteRepository
     {
-       
-        public NoteRepository(INoteRepository note)
-        {
-            
-        }
+
         public void Add(Note note)
         {
-            
-
+            list<Note> notes = new list<Note>();
+            notes.Add(note);
 
         }
     }
