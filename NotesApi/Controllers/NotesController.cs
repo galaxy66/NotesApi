@@ -26,5 +26,15 @@ namespace NotesApi.Controllers
             _notes.Add(note);
             return Created("/api/notes/" + note.Id, note);
         }
+
+        [HttpGet]
+        [Route("api/notes")]
+        public IActionResult GetAllNotes()
+        {
+            var notes = _notes.GetAll();
+            if (notes.Count == 0 || notes == null)
+                return NotFound();
+            return Ok(notes);
+        }
     }
 }

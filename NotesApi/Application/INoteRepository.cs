@@ -9,5 +9,6 @@ namespace NotesApi.Application
     public interface INoteRepository
     {
         void Add(Note note);
+        List<Note> GetAll();
     }
 }

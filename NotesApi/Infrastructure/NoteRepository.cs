@@ -18,5 +18,9 @@ namespace NotesApi.Infrastructure
             notes.Add(note);
 
         }
+        public List<Note> GetAll()
+        {
+            return notes;
+        }
     }
 }
