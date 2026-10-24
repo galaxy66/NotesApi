@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NotesApi.Application;
+using NotesApi.Infrastructure;
 
 namespace NotesApi
 {
@@ -32,6 +34,7 @@ namespace NotesApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotesApi", Version = "v1" });
             });
+            services.AddSingleton<INoteRepository, NoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
