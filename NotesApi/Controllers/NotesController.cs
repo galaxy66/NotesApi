@@ -39,7 +39,7 @@ namespace NotesApi.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/notes/{id}")]
         public IActionResult UpdateNote(int id, Note note)
         {
@@ -55,6 +55,17 @@ namespace NotesApi.Controllers
             var notes = _notes.GetAll();
 
             return Ok(notes);
+        }
+
+        [HttpDelete]
+        [Route("api/notes/{id}")]
+        public IActionResult DeleteRow(int id)
+        {
+            var note = _notes.GetById(id);
+            if (note == null)
+                return NotFound();
+            _notes.Remove(id);
+            return NoContent();
         }
     }
 }

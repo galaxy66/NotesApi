@@ -42,6 +42,7 @@ namespace NotesApi.Infrastructure
             if (existingNote != null)
             {
                 notes.Remove(existingNote);
+                note.Id = id;
                 notes.Add(note);
                 return true;
             }
