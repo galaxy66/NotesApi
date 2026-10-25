@@ -44,6 +44,8 @@ namespace NotesApi.Controllers
         public IActionResult UpdateNote(int id, Note note)
         {
             if (!_notes.UpdateNote(id, note))
+                return NotFound();
+            return Ok(note);
         }
 
         [HttpGet]
