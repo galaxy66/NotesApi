@@ -17,6 +17,17 @@ namespace NotesApi.Controllers
         {
             _notes = note;
         }
+        [HttpGet]
+        [Route("api/notes/{id}")]
+        public IActionResult GetNoteById(int id)
+        {
+            var note = _notes.GetById(id);
+            if (note == null)
+                return NotFound();
+            return Ok(note);
+        }
+
+
         [HttpPost]
         [Route("api/notes")]
         public IActionResult CreateNote(Note note)
