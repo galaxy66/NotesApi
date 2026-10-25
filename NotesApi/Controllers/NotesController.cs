@@ -27,13 +27,20 @@ namespace NotesApi.Controllers
             return Created("/api/notes/" + note.Id, note);
         }
 
+
+        [HttpPost]
+        [Route("api/notes/{id}")]
+        public IActionResult UpdateNote(int id, Note note)
+        {
+            if (!_notes.UpdateNote(id, note))
+        }
+
         [HttpGet]
         [Route("api/notes")]
         public IActionResult GetAllNotes()
         {
             var notes = _notes.GetAll();
-            if (notes.Count == 0 || notes == null)
-                return NotFound();
+
             return Ok(notes);
         }
     }

@@ -10,5 +10,8 @@ namespace NotesApi.Application
     {
         void Add(Note note);
         List<Note> GetAll();
+        Note GetById(int id);
+        void Remove(int id);
+        bool UpdateNote(int id, Note note);
     }
 }

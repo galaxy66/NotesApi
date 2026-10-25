@@ -22,5 +22,30 @@ namespace NotesApi.Infrastructure
         {
             return notes;
         }
+        public Note GetById(int id)
+        {
+            return notes.FirstOrDefault(n => n.Id == id);
+
+        }
+
+        public void Remove(int id)
+        {
+            var note = GetById(id);
+            if (note != null)
+            {
+                notes.Remove(note);
+            }
+        }
+        public bool UpdateNote(int id, Note note)
+        {
+            var existingNote = GetById(id);
+            if (existingNote != null)
+            {
+                notes.Remove(existingNote);
+                notes.Add(note);
+                return true;
+            }
+            return false;
+        }
     }
 }
