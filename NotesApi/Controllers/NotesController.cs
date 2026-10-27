@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using NotesApi.Application;
 using NotesApi.Domain;
 using NotesApi.Infrastructure;
+using NotesApi.Application.DTO;
 
 namespace NotesApi.Controllers
 {
@@ -13,6 +14,7 @@ namespace NotesApi.Controllers
     public class NotesController : ControllerBase
     {
         private readonly INoteRepository _notes;
+        private readonly CreateNoteRequest _createNoteRequest;
         public NotesController(INoteRepository note)
         {
             _notes = note;
@@ -30,8 +32,13 @@ namespace NotesApi.Controllers
 
         [HttpPost]
         [Route("api/notes")]
-        public IActionResult CreateNote(Note note)
+        public IActionResult CreateNote (CreateNoteRequest request)
         {
+            var note=new Note
+            {
+                Title = request.Title,
+                Body = request.Body
+            };
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);

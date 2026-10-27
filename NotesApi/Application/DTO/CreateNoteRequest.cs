@@ -10,5 +10,5 @@ public class CreateNoteRequest
 
     [Required]
     [StringLength(5000, MinimumLength = 1)]
-    public string Content { get; set; } = string.Empty;
+    public string Body { get; set; } = string.Empty;
 }
