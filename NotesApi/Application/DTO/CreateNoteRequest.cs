@@ -1,14 +1,17 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace NotesApi.Application.DTO;
-
-public class CreateNoteRequest
+namespace NotesApi.Application.DTO
 {
-    [Required]
-    [StringLength(200, MinimumLength = 1)]
-    public string Title { get; set; } = string.Empty;
+    public class CreateNoteRequest
+    {
+        [Required]
+        [StringLength(200, MinimumLength = 1)]
+        public string Title { get; set; } = string.Empty;
 
-    [Required]
-    [StringLength(5000, MinimumLength = 1)]
-    public string Body { get; set; } = string.Empty;
+        [Required]
+        [StringLength(5000, MinimumLength = 1)]
+        public string Body { get; set; } = string.Empty;
+    } 
 }
+
+
