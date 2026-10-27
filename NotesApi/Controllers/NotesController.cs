@@ -14,7 +14,6 @@ namespace NotesApi.Controllers
     public class NotesController : ControllerBase
     {
         private readonly INoteRepository _notes;
-        private readonly CreateNoteRequest _createNoteRequest;
         public NotesController(INoteRepository note)
         {
             _notes = note;
