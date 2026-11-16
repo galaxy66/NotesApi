@@ -15,7 +15,7 @@ namespace NotesApi.Application.DTO
         {
             get; set;
         }
-        public int Body
+        public string Body
         {
             get; set;
         }
