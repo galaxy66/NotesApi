@@ -7,7 +7,7 @@ namespace NotesApi.Application.DTO
 {
     public class NoteResponse
     {
-        public int id
+        public int Id
         {
             get; set;
         }
