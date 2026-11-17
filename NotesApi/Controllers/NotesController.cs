@@ -41,7 +41,12 @@ namespace NotesApi.Controllers
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);
-            return Created("/api/notes/" + note.Id, note);
+            NoteResponse noteresp = new NoteResponse {
+                Id = note.Id,
+                Title = note.Title,
+                Body = note.Body
+            };
+            return Created("/api/notes/" + noteresp.Id, noteresp);
         }
 
 
