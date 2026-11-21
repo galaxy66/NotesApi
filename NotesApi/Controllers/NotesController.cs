@@ -25,7 +25,7 @@ namespace NotesApi.Controllers
             var note = _notes.GetById(id);
             if (note == null)
                 return NotFound();
-            return Ok(note);
+            return Ok(NoteResponse.FromNote(note));
         }
 
 
@@ -41,12 +41,8 @@ namespace NotesApi.Controllers
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);
-            NoteResponse noteresp = new NoteResponse {
-                Id = note.Id,
-                Title = note.Title,
-                Body = note.Body
-            };
-            return Created("/api/notes/" + noteresp.Id, noteresp);
+            
+            return Created("/api/notes/" + NoteResponse.FromNote(note).Id, NoteResponse.FromNote(note));
         }
 
 
@@ -56,14 +52,14 @@ namespace NotesApi.Controllers
         {
             if (!_notes.UpdateNote(id, note))
                 return NotFound();
-            return Ok(note);
+            return Ok(NoteResponse.FromNote(note));
         }
 
         [HttpGet]
         [Route("api/notes")]
         public IActionResult GetAllNotes()
         {
-            var notes = _notes.GetAll();
+            var notes = _notes.GetAll().Select(n => NoteResponse.FromNote(n));
 
             return Ok(notes);
         }
