@@ -41,15 +41,20 @@ namespace NotesApi.Controllers
             if (!note.HasTitle())
                 return BadRequest();
             _notes.Add(note);
-            
-            return Created("/api/notes/" + NoteResponse.FromNote(note).Id, NoteResponse.FromNote(note));
+            var noteResponse = NoteResponse.FromNote(note);
+            return Created("/api/notes/" + noteResponse.Id, noteResponse);
         }
 
 
         [HttpPut]
         [Route("api/notes/{id}")]
-        public IActionResult UpdateNote(int id, Note note)
+        public IActionResult UpdateNote(int id, CreateNoteRequest request)
         {
+            var note = new Note
+            {
+                Title = request.Title,
+                Body = request.Body
+            };
             if (!_notes.UpdateNote(id, note))
                 return NotFound();
             return Ok(NoteResponse.FromNote(note));
