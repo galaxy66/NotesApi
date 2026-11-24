@@ -6,8 +6,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [notes, setNotes] =useState([{id:1,title:"1",body:"1"},{id:2,title:"2",body:"2"}]);
   const name = "Hani"
-  const notes = [{id:1,title:"1",body:"1"},{id:2,title:"2",body:"2"}]
+  
   return (
     <>
       <section id="center">
